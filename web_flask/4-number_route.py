@@ -1,17 +1,52 @@
 #!/usr/bin/python3
-"""c/num
 """
-from flask import Flask
+Flask web application
+"""
 
+from flask import Flask
 
 app = Flask(__name__)
 
 
-@app.route('/number/<int:n>', strict_slashes=False)
-def get_int(n):
-    """check if var is int"""
-    return "{} is a number".format(n)
+@app.route('/', strict_slashes=False)
+def hello():
+    """
+        Displays hello message
+    """
+    return "Hello HBNB!"
 
+
+@app.route('/hbnb', strict_slashes=False)
+def hbnb():
+    """
+        Displays the name of application
+    """
+    return "HBNB"
+
+
+@app.route('/c/<text>', strict_slashes=False)
+def croute(text):
+    """
+        Displays C followed by text variable
+
+    """
+    return "C %s" % text.replace('_', ' ')
+
+@app.route('/python/', defaults={'text': 'is_cool'})
+@app.route('/python/<text>', strict_slashes=False)
+def pythonroute(text='is_cool'):
+    """
+        Displays C followed by text variable
+
+    """
+    return "Python %s" % text.replace('_', ' ')
+
+@app.route('/number/<int:n>', strict_slashes=False)
+def int_only(n):
+    """
+        Displays number if int
+    """
+    return '%d is a number'
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port='5000')
+    app.run(host='0.0.0.0')
