@@ -33,6 +33,7 @@ def croute(text):
     """
     return "C %s" % text.replace('_', ' ')
 
+
 @app.route('/python/', defaults={'text': 'is_cool'})
 @app.route('/python/<text>', strict_slashes=False)
 def pythonroute(text='is_cool'):
@@ -42,12 +43,14 @@ def pythonroute(text='is_cool'):
     """
     return "Python %s" % text.replace('_', ' ')
 
+
 @app.route('/number/<int:n>', strict_slashes=False)
 def int_only(n):
     """
         Displays number if int
     """
     return '%d is a number' % n
+
 
 @app.route('/number_template/<int:n>', strict_slashes=False)
 def return_html_template(n):
