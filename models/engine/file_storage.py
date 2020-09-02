@@ -63,5 +63,5 @@ class FileStorage:
                 __objects["{}.{}".format(type(obj).__name__, obj.id)]
 
     def close(self):
-        """call Reload()"""
+        """call Reload() method for deserializing JSON objects"""
         self.reload()
